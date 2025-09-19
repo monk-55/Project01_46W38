@@ -23,13 +23,20 @@ def power_output(wind_speed, rated_power, cut_in, rated_wind_speed, cut_out):
     Docstring here.
     """
     # Add comment if needed.
-    result = x +  y # Add comment if needed.
+    if wind_speed < cut_in or wind_speed > cut_out:
+        power = 0
+    elif wind_speed >= rated_wind_speed and wind_speed <= cut_out:
+        power = rated_power
+    else:
+        power = wind_speed
+     
+ # Add comment if needed.
 
-    return result
+    return power
 
 if __name__ == '__main__':
     # Write the main script to use the function here:
-    wind_speed = 5
+    wind_speed =float(input('what is the wind speed?'))
     rated_power = 15
     cut_in = 3
     rated_wind_speed = 11
@@ -37,8 +44,8 @@ if __name__ == '__main__':
 
 
     # Add comments to explain if needed.
-    power = power_output(x, y)
-    print(f'x + y = {z}')  # Add comment when needed
+    power = power_output(wind_speed,rated_power, cut_in, rated_wind_speed, cut_out)
+    print(f'power = {power}')  # Add comment when needed
 
 
 
