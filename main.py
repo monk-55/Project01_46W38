@@ -18,7 +18,7 @@ You should also write the main script to run your function for at least one exam
 """
 #Creating the function
 
-def power_output(wind_speed, rated_power, cut_in, rated_wind_speed, cut_out):
+def power_output(wind_speed, rated_power, cut_in, rated_wind_speed, cut_out, int_option):
     """
     Docstring here.
     """
@@ -28,7 +28,9 @@ def power_output(wind_speed, rated_power, cut_in, rated_wind_speed, cut_out):
     elif wind_speed >= rated_wind_speed and wind_speed <= cut_out:
         power = rated_power
     else:
-        power = wind_speed
+        if int_option == 'linear':
+            power = rated_power*((wind_speed - cut_in) / (rated_wind_speed - cut_in))
+        
      
  # Add comment if needed.
 
@@ -41,11 +43,15 @@ if __name__ == '__main__':
     cut_in = 3
     rated_wind_speed = 11
     cut_out = 25
+    int_option = 'linear'
+
+
 
 
     # Add comments to explain if needed.
-    power = power_output(wind_speed,rated_power, cut_in, rated_wind_speed, cut_out)
+    power = power_output(wind_speed,rated_power, cut_in, rated_wind_speed, cut_out, int_option)
     print(f'power = {power}')  # Add comment when needed
+
 
 
 
