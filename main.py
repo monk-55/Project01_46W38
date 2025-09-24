@@ -24,23 +24,21 @@ def power_output(wind_speed, rated_power = 15, cut_in = 3, rated_wind_speed = 11
     # checking if below cut in or above cut out.
     if wind_speed < cut_in or wind_speed > cut_out:
         power = 0
-        return power
         #checking if rated or above and below cut in
     elif wind_speed >= rated_wind_speed and wind_speed <= cut_out:
         power = rated_power
-        return power
         #if neither of the above the power to be calculated, different methods dependent on int_option specified, try except is included to catch
         #inputs that are neither linear or cubic
     else:
 
         if int_option == 'linear':
             power = rated_power*((wind_speed - cut_in) / (rated_wind_speed - cut_in))
-            return power
         elif int_option == 'cubic':
             power = rated_power*((wind_speed**3)/(rated_wind_speed**3))
-            return power
         else: 
             raise ValueError(f"{int_option} is not a valid option, please specify linear or cubic")
+        
+    return power
 
 
 
