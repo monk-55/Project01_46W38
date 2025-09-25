@@ -23,14 +23,14 @@ def calculate_power_output(wind_speed, rated_power = 15, cut_in = 3, rated_wind_
     Secondly it will check if wind speed is at rated and also below cut out, in which case power will be equal to rated
     If neither of those conditions are satisfied it will calculate the power based on the interpolation option specified
     """
-    # checking if below cut in or above cut out.
+    # checking if wind speed is below cut in or equal to or above cut out.
     if wind_speed < cut_in or wind_speed >= cut_out:
         power = 0
-        #checking if rated or above and below cut in
+        #checking if wind speed is equal to or above rated and below cut out
     elif wind_speed >= rated_wind_speed and wind_speed < cut_out:
         power = rated_power
-        #if neither of the above the power to be calculated, different methods dependent on int_option specified, try except is included to catch
-        #inputs that are neither linear or cubic
+        #if neither of the above then the power needs to be calculated based on 2 different methods dependent on int_option specified, try except is included to catch
+        #inputs that are neither 'linear' or 'cubic'
     else:
 
         if int_option == 'linear':
